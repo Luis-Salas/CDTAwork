@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <form class="" action="submit" method="POST">
+      {% csrf_token %}
+      <h1>name</h1>
+      <input type="text" name="name" value="">
+      <h1>dojo location</h1>
+      <select class="" name="location">select
+        <option value="chicago">chicago</option>
+        <option value="seattle">seattle</option>
+        <option value="silicon valley">silicon valley</option>
+      </select>
+      <h1>comment</h1>
+      <textarea name="comment" rows="8" cols="80">
+      </textarea>
+      <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

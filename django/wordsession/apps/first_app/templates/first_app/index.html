@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Add a new Word</h1>
+    <form class="" action="/create" method="post">
+      {% csrf_token %}
+      Enter word<input type="text" name="word" value=""><br>
+      <h3>select color</h3>
+      red<input type="radio" name="color" value="red">
+      blue<input type="radio" name="color" value="blue">
+      black<input type="radio" name="color" value="black">
+      <h3>big font</h3>
+      <input type="hidden" name="font" value="p">
+      <input type="checkbox" name="font" value="h1"><br>
+      <input type="submit" name="submit" value="submit">
+    </form>
+    {% for word in request.session.word %}
+      <{{word.font}} style="color:{{word.color}}">{{ word.word }}</{{word.font}}>
+    {% endfor %}
+    <a href="/reset">
+      <button type="button" name="button">reset</button>
+    </a>
+  </body>
+</html>

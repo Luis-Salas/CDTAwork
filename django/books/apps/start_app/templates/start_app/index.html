@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>add books</h1>
+    <form class="" action="create/" method="POST">
+      {% csrf_token %}
+      <h3>title</h3>
+      <input type="text" name="title" value="">
+      <h3>description</h3>
+      <textarea name="description" rows="8" cols="80"></textarea>
+      <button type="submit" name="button">button</button>
+    </form>
+    {% for book in all_books %}
+
+       <h1>{{ book.title }}</h1>
+       <p>{{book.id}}</p>
+       <p>{{book.description}}</p>
+       <a href="book/{{book.id}}">view</a>
+   {% endfor %}
+  </body>
+</html>

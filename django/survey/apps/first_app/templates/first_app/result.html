@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{request.session.count}}
+    <h1>submitted information</h1>
+    <h3>name</h3>
+    {{request.session.name}}
+    <h3>location</h3>
+    {{request.session.location}}
+    <h3>comment</h3>
+    {{request.session.comment}}
+    <a href="/">
+      <button type="button" name="button">return</button>
+    </a>
+  </body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>authors</h1>
+    <form class="" action="/createAuthor/" method="POST">
+      {% csrf_token %}
+      name<input type="text" name="name" value="">
+      notes<input type="text" name="notes" value="">
+      <button type="submit" name="button">submit</button>
+    </form>
+    {% for x in authors %}
+       <h1>{{ x.name }}</h1>
+       <p>{{x.notes}}</p>
+       <a href="/author/{{x.id}}">view</a>
+   {% endfor %}
+  </body>
+</html>

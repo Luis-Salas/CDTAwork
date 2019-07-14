@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NinjaMan</title>
+
+    <style type="text/css">
+/*------------------------------WorldElements------------------------------*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .row{
+            line-height: 0;
+        }
+        .wall{
+            background-color: blue;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+        .blank{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+/*------------------------------Food------------------------------*/
+
+        .onigiri{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("onigiri.png");
+            background-size: contain;
+        }
+        .sushi{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("sushi.png");
+            background-size: contain;
+        }
+/*------------------------------Characters------------------------------*/
+
+        #ninjaman{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("ninja.gif");
+            background-size: contain;
+            position: absolute;
+        }
+        #red{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("red.gif");
+            background-size: contain;
+            position: absolute;
+        }
+        #pumpky{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("pumpky.gif");
+            background-size: contain;
+            position: absolute;
+        }
+        #pinky{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("pinky.gif");
+            background-size: contain;
+            position: absolute;
+        }
+        #scaredy{
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url("scaredy.png");
+            background-size: contain;
+            position: absolute;
+        }
+/*------------------------------Score/Lives------------------------------*/
+        span
+        {
+            margin-right: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='world'></div>
+    <div id='ninjaman'></div>
+    <div id='red'></div>
+    <div id='pumpky'></div>
+    <div id='pinky'></div>
+    <div id='scaredy'></div>
+    <div><h1>Score: <span id="score">0</span>Lives: <span id="lives">3</span></div>
+</body>
+
+<script type="text/javascript">
+    var world =
+    [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 0, 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 0, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 1],
+        [1, 0, Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), Math.floor(Math.random()*4), 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ];
+
+    var worldDict =
+    {
+        0: 'blank',
+        1: 'wall',
+        2: 'sushi',
+        3: 'onigiri'
+    }
+
+    function drawWorld(){
+        output = "";
+
+        for(var row = 0; row < world.length; row++)
+        {
+            output += "<div class='row'>"
+
+            for(var x = 0; x < world[row].length; x++)
+            {
+                output += "<div class= '" + worldDict[world[row][x]] + "'></div>"
+
+            }
+            output += "</div>"
+
+            // console.log(Object(enemyLocation))
+
+            // console.log(redLocationLeft)
+
+        }
+        var redLocationRight = world[red.y][red.x +1 ]
+        var redLocationLeft = world[red.y][red.x -1 ]
+        var redLocationup = world[red.y - 1][red.x]
+        var redLocationdown = world[red.y + 1][red.x]
+
+        enemyLocation =
+        {
+          left: redLocationLeft,
+          right: redLocationRight,
+          up: redLocationup,
+          down: redLocationdown
+        }
+        console.log(enemyLocation
+
+
+        document.getElementById('world').innerHTML = output;
+    }
+
+
+    var red =
+    {
+        x: 1,
+        y: 10
+    }
+
+    drawred()
+    drawWorld()
+
+
+/*------------------------------DrawNinjaMan------------------------------*/
+    var ninjaman =
+    {
+        x: 1,
+        y: 1
+    }
+
+    function drawNinjaman()
+    {
+        document.getElementById('ninjaman').style.top = ninjaman.y * 40 + 'px'
+        document.getElementById('ninjaman').style.left = ninjaman.x * 40 + 'px'
+    }
+    drawNinjaman()
+    var counter = 0
+    var lives = 3
+
+    document.onkeydown = function(e)
+    {
+
+
+        if(e.keyCode == 37)
+        {
+            if(world[ninjaman.y][ninjaman.x-1] != 1)
+            {
+                ninjaman.x--;
+            }
+        }
+        if(e.keyCode == 39)
+        {
+            if(world[ninjaman.y][ninjaman.x+1] != 1)
+            {
+                ninjaman.x++;
+            }
+        }
+        if(e.keyCode == 38)
+        {
+            if(world[ninjaman.y-1][ninjaman.x] != 1)
+            {
+                ninjaman.y--;
+            }
+        }
+        if(e.keyCode == 40)
+        {
+            if(world[ninjaman.y+1][ninjaman.x] != 1)
+            {
+            ninjaman.y++;
+            }
+        }
+        console.log(enemyLocation)
+        if(world[red.y][red.x +1 ] != 1){
+          red.x += 1
+          document.getElementById('red').style.left = red.x * 40 + 'px'
+          console.log(world)
+          console.log(red.x, 'reds x location')
+
+
+/*------------------------------KeepingScore------------------------------*/
+
+        if(world[ninjaman.y][ninjaman.x] == 2)
+        {
+            counter = counter + 10;
+            document.getElementById('score').innerHTML = counter;
+        }
+
+        if(world[ninjaman.y][ninjaman.x] == 3)
+        {
+            counter = counter + 5;
+            document.getElementById('score').innerHTML = counter;
+        }
+
+/*------------------------------Lives------------------------------*/
+        if(ninjaman.x == red.x && ninjaman.y == red.y)
+        {
+            lives = lives - 1;
+            alert("You lost a life!...You have " + lives + " remaining!");
+            ninjaman.x=1
+            ninjaman.y=1
+            document.getElementById('lives').innerHTML = lives
+        }
+
+        if(ninjaman.x == pinky.x && ninjaman.y == pinky.y)
+        {
+            lives = lives - 1;
+            alert("You lost a life!...You have " + lives + " remaining!");
+            ninjaman.x=1
+            ninjaman.y=1
+            document.getElementById('lives').innerHTML = lives
+        }
+
+        if(ninjaman.x == pumpky.x && ninjaman.y == pumpky.y)
+        {
+            lives = lives - 1;
+            alert("You lost a life!...You have " + lives + " remaining!");
+            ninjaman.x=1
+            ninjaman.y=1
+            document.getElementById('lives').innerHTML = lives
+        }
+
+        if(ninjaman.x == scaredy.x && ninjaman.y == scaredy.y)
+        {
+            lives = lives - 1;
+            alert("You lost a life!...You have " + lives + " remaining!");
+            ninjaman.x=1
+            ninjaman.y=1
+            document.getElementById('lives').innerHTML = lives
+        }
+
+        if(lives == 0)
+        {
+            alert("You have no more lives!... Game Over");
+            location.reload(true)
+            lives = 3
+        }
+
+
+
+        world[ninjaman.y][ninjaman.x] = 0
+
+        drawNinjaman()
+        drawWorld()
+
+          //redlocation up down right and left
+          ///arr.push locations that are not a wall
+
+          // if the var do not have a 1
+          // up 1 down 2 left 3
+          // arr[math.random (1-3 ) ]
+        }
+
+    }
+
+/*------------------------------DrawRed------------------------------*/
+
+
+    function drawred()
+    {
+
+        for(i = 0; i <= red.length; i++)
+        if(world[red] != 1)
+        {
+            red.x++
+        }
+        // if([red.y][red.x-1] != 1)
+        // {
+        // red.x = Math.floor(Math.random()*18)+1;
+        // red.y = Math.floor(Math.random()*12)+1;
+        // }
+        // if([red.y][red.x+1] != 1)
+        // {
+        // red.x = Math.floor(Math.random()*18)+1;
+        // red.y = Math.floor(Math.random()*12)+1;
+        // }
+        // if([red.y-1][red.x] != 1)
+        // {
+        // red.x = Math.floor(Math.random()*18)+1;
+        // red.y = Math.floor(Math.random()*12)+1;
+        // }
+        // if([red.y+1][red.x] != 1)
+        // {
+        // red.x = Math.floor(Math.random()*18)+1;
+        // red.y = Math.floor(Math.random()*12)+1;
+        // }
+
+        document.getElementById('red').style.top = red.y * 40 + 'px'
+        document.getElementById('red').style.left = red.x * 40 + 'px'
+
+        console.log(red)
+    }
+
+
+
+
+
+
+/*------------------------------DrawPinky------------------------------*/
+    var pinky =
+    {
+        x: 18,
+        y: 10
+    }
+
+    function drawpinky()
+    {
+        document.getElementById('pinky').style.top = pinky.y * 40 + 'px'
+        document.getElementById('pinky').style.left = pinky.x * 40 + 'px'
+    }
+    drawpinky()
+
+/*------------------------------DrawPumpky------------------------------*/
+    var pumpky =
+    {
+        x: 18,
+        y: 1
+    }
+
+    function drawpumpky()
+    {
+        document.getElementById('pumpky').style.top = pumpky.y * 40 + 'px'
+        document.getElementById('pumpky').style.left = pumpky.x * 40 + 'px'
+    }
+    drawpumpky()
+
+/*------------------------------DrawScaredy------------------------------*/
+    var scaredy =
+    {
+        x: 9,
+        y: 5
+    }
+
+    function drawscaredy()
+    {
+        document.getElementById('scaredy').style.top = scaredy.y * 40 + 'px'
+        document.getElementById('scaredy').style.left = scaredy.x * 40 + 'px'
+    }
+    drawscaredy()
+
+</script>
+
+</html>
