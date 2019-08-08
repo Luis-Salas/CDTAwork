@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <h1>hello mongoose</h1>
+    <form class="" action="/users" method="post">
+      Name<input type="text" name="name" value="">
+      age<input type="text" name="age" value="">
+      <button type="submit" name="button">add2</button>
+      <% for (var user of users) { %>
+        <h3>Name: <%= user.name %></h3>
+        <h4>age: <%= user.age %></h4>
+        <hr>
+    <% } %>
+    </form>
+  </body>
+</html>

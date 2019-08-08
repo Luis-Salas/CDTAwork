@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>awesome quotes</h1>
+    <% for (var x of quotes) { %>
+      <h3>Name: <%= x.user_name %></h3>
+      <h4>quote: <%= x.quote %></h4>
+      <hr>
+  <% } %>
+  </body>
+</html>
