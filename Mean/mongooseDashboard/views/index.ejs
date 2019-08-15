@@ -1,6 +1,22 @@
 <html>
   <body>
-      <h1>displaying all mongoose</h1>
+      <h1>displaying Dogs</h1>
       <a href="/mongoose_form">make a new mongoose</a>
+
+
+
+      <% for (var x of dogs) { %>
+      <h3>Name: <a href="dogs/<%= x.id %>"><%= x.name %></a></h3>
+      <h4>color: <%= x.color %></h4>
+      <h4>Weight: <%= x.weight %></h4>
+      <a href="<%= x.id %>/edit">edit dogs</a><br>
+
+      <form class="" action="/delete/<%= x.id %>" method="post">
+        <button type="submit" name="button">destroy dog :(</button>
+      </form>
+
+      <hr>
+      <% } %>
+
   </body>
 </html>

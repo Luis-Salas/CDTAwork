@@ -1,28 +1,89 @@
-const session = require('express-session');
-const express = require("express");
+// Dependencies
+const express = require('express'),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    path = require('path'),
+    port = 3000;
+
+// Create express app
 const app = express();
-app.use(express.static(__dirname +'/static'))
+
+// Use bodyParser to parse form data sent via HTTP POST
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Tell server where views are and what templating engine I'm using
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-const sessionConfig  = {
-  saveUninitialized: true,
-  resave: false,
-  name: 'session',
-  secret: 'thisIsSuperSekret'
-};
-app.use(express.urlencoded({extended: true}));
-app.use(session(sessionConfig));
 
-app.get('/', (request, response) => {
-   response.render('index')
+// Create connection to database
+const connection = mongoose.connect("mongodb://localhost/dog_db");
+
+// Create dog schema and attach it as a model to our database
+const DogSchema = new mongoose.Schema({
+    name: String,
+    weight: Number,
+    color: String
 });
-app.get('/mongoose_form', (request, response) => {
-  response.render('create')
-})
-app.post('/create', (request, response) =>{
-  console.log(request.form)
-})
+
+// Mongoose automatically looks for the plural version of your model name, so a Dog model in Mongoose looks for 'dogs' in Mongo.
+const Dog = mongoose.model('Dog', DogSchema);
+
+// Routes go here!
+app.get('/', function(req, res){
+  Dog.find()
+      .then(users => {
+          console.log(users)
+          res.render('index', {dogs: users})
+      })
+      .catch(err => res.json(err));
+});
+
+// Create
+app.post('/', function(req, res){
+  // Create a new dog!
+  Dog.create(req.body, function(err, result){
+    if (err) { console.log(err); }
+    res.redirect('/')
+  });
+});
+
+// New
+app.get('/new', function(req, res){
+  res.render('new');
+});
+
+// Show
+app.get('/:id', function(req, res){
+  Dog.find({ _id: req.params.id }, function(err, response) {
+    if (err) { console.log(err); }
+    res.render('show', { dog: response[0] });
+  });
+});
+
+app.get('/:id/edit/', function(req, res){
+  Dog.find({ _id: req.params.id }, function(err, response) {
+    if (err) { console.log(err); }
+    res.render('edit', { dog: response[0] });
+  })
+});
+
+// Update
+app.post('/:id', function(req, res){
+  Dog.update({ _id: req.params.id }, req.body, function(err, result){
+    if (err) { console.log(err); }
+    res.redirect('/');
+  });
+});
+
+// Delete
+app.post('/delete/:id', function(req, res){
+  Dog.remove({ _id: req.params.id }, function(err, result){
+    if (err) { console.log(err); }
+    res.redirect('/');
+  });
+});
 
 
-
-app.listen(5000, () => console.log("listening on port 5000"));
+app.listen(port, function(){
+  console.log("Running on ", port);
+});
