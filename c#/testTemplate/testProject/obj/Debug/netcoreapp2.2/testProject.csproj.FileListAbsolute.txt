@@ -1,0 +1,14 @@
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\bin\Debug\netcoreapp2.2\testProject.deps.json
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\bin\Debug\netcoreapp2.2\testProject.runtimeconfig.json
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\bin\Debug\netcoreapp2.2\testProject.runtimeconfig.dev.json
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\bin\Debug\netcoreapp2.2\testProject.dll
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\bin\Debug\netcoreapp2.2\testProject.pdb
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.csprojAssemblyReference.cache
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.RazorAssemblyInfo.cache
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.RazorAssemblyInfo.cs
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.AssemblyInfoInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.AssemblyInfo.cs
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.RazorTargetAssemblyInfo.cache
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.dll
+C:\Users\Luis\Documents\CDTAwork\c#\testTemplate\testProject\obj\Debug\netcoreapp2.2\testProject.pdb

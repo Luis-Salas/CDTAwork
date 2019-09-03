@@ -1,14 +1,25 @@
-<div id="container">
+<div class="root">  <!-- tip: use css to place a border around your different components to better visualize them -->
   <h1>{{title}}</h1>
-  <button (click)="getTasksFromService()">Click me!</button>
-  <div *ngFor="let task of tasks">
-    	<p>{{task.title}}<button id="showbtn" (click)="showFromService(task._id)">SHOW</button></p>
-      {{task.description}}
-      {{task._id}}
-
-    </div>
-
-    {{task.title}}
+  <app-task></app-task>     <!-- use the selector of the task component to nest it within the root component -->
+  <form (submit)="createFromService()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+    <p> {{ newTask | json }} </p>
+    <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+    <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+    <input type="submit" value="Create Task" />
+</form>
+<p>test</p>
+<button (click)="getTasksFromService()">Click me!</button>
+<div *ngFor="let task of tasks">
+    <p>{{task.title}}<button id="showbtn" (click)="showFromService(task._id)">SHOW</button></p>
     {{task.description}}
+    {{task._id}}
 
 </div>
+
+  {{task.title}}
+  {{task.description}}
+</div>
+
+
+<app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task> 

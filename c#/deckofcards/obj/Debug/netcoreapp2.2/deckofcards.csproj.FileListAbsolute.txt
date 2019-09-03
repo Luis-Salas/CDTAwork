@@ -1,0 +1,11 @@
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\bin\Debug\netcoreapp2.2\deckofcards.deps.json
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\bin\Debug\netcoreapp2.2\deckofcards.runtimeconfig.json
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\bin\Debug\netcoreapp2.2\deckofcards.runtimeconfig.dev.json
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\bin\Debug\netcoreapp2.2\deckofcards.dll
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\bin\Debug\netcoreapp2.2\deckofcards.pdb
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.csprojAssemblyReference.cache
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.AssemblyInfoInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.AssemblyInfo.cs
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.dll
+C:\Users\Luis\Documents\CDTAwork\c#\deckofcards\obj\Debug\netcoreapp2.2\deckofcards.pdb

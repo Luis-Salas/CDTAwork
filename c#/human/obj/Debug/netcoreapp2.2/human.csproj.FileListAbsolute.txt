@@ -1,0 +1,4 @@
+C:\Users\Luis\Documents\CDTAwork\c#\human\obj\Debug\netcoreapp2.2\human.csprojAssemblyReference.cache
+C:\Users\Luis\Documents\CDTAwork\c#\human\obj\Debug\netcoreapp2.2\human.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\human\obj\Debug\netcoreapp2.2\human.AssemblyInfoInputs.cache
+C:\Users\Luis\Documents\CDTAwork\c#\human\obj\Debug\netcoreapp2.2\human.AssemblyInfo.cs

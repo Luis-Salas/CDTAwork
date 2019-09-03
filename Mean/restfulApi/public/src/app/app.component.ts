@@ -10,8 +10,9 @@ import { HttpService } from './http.service';
 
 export class AppComponent implements OnInit {
     title = "Restful Tasks API"
-    tasks = [];
-    task = ""
+    tasks:any = [];
+    task:any = "";
+    newTask:any;
 
 
 
@@ -19,8 +20,9 @@ export class AppComponent implements OnInit {
 
    }
    ngOnInit(){
+    this.newTask = { title: "", description: "" }
 
-   }
+   }  
    getTasksFromService(){
       let observable = this._httpService.getTasks();
       observable.subscribe(data => {
@@ -38,5 +40,15 @@ export class AppComponent implements OnInit {
            this.task = data
          });
      console.log(id)
+   }
+   createFromService(){
+    let observable = this._httpService.create(this.newTask);
+    observable.subscribe(data =>{
+      console.log("created task!", data)
+      this.task = data
+    });
+        this.newTask = { title: "", description: "" }
+
+     console.log(this.newTask)
    }
  }

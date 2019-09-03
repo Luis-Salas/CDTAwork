@@ -24,4 +24,7 @@ export class HttpService {
   // tempObservable.subscribe(data => console.log("Got our task, using the ID!", data));
   return this._http.get("/" + id + "/");
   }
+  create(newtask){
+    return this._http.post("/create", newtask)
+  }
 }
