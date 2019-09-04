@@ -12071,23 +12071,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luis\\.nuget\\packages\\": {},
+    "C:\\Users\\escar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Luis\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\portfolio.csproj",
+      "projectUniqueName": "c:\\Users\\escar\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\portfolio.csproj",
       "projectName": "portfolio",
-      "projectPath": "c:\\Users\\Luis\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\portfolio.csproj",
-      "packagesPath": "C:\\Users\\Luis\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Luis\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\obj\\",
+      "projectPath": "c:\\Users\\escar\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\portfolio.csproj",
+      "packagesPath": "C:\\Users\\escar\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\escar\\Documents\\CDTAwork\\c#\\portfolio\\portfolio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Luis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\escar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
