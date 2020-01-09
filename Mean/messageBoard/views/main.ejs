@@ -1,0 +1,23 @@
+<h1>Message Board</h1>
+<form action="/createMessage" method="post">
+    Username<input type="text" name="username">
+    Message<input type="text" name="content">
+    <input type="submit">
+</form>
+
+<% for (var i of data) {%>
+    <p><%= i.name %></p>
+    <h2><%= i.content %></h2>
+    <h1>post a comment</h1>
+    <% for (var comment of i._comments) { %>
+        <h2>comment: <%= comment.content %></h2>
+        <p>Name :<%= comment.name %></p>
+    <% } %>
+    <form action="createComment/<%= i._id %>" method="POST">
+        Username<input type="text" name="name">
+        Comment<input type="text" name="content">
+        <input type="submit" value="submit">
+    </form>
+    <hr>
+<% } %>
+

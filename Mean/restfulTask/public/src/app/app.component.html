@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>all tasks</h1>
+  <button (click)="getTasksFromService()">get all tasks</button>
+
+  <div *ngIf="tasks">
+  <div *ngFor="let x of tasks"> 
+        <h3><strong>task name </strong>{{x.title}}</h3>
+        <p><strong>description</strong> {{x.description}}</p>
+        {{x._id}}
+        <button (click)="getOneTask(x._id)">get info on task</button>
+        <button (click)="getUpdateInfo(x._id)">Update Task</button>
+        <button (click)="deleteTask(x._id)">Delete Task</button>
+
+      </div>
+    </div>
+    <form (submit)="createtask()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <p> {{ newTask | json }} </p>
+      <input type="text" name="title" [(ngModel)]="newTask.title" />
+      <input type="text" name="description" [(ngModel)]="newTask.description" />
+      <input type="submit" value="Create Task" />
+    </form>
+    <div *ngIf="updateInfo.title">
+      <form (submit)="Update(updateInfo._id)">
+        <h1>update</h1>
+        <input type="text" name="title" [(ngModel)]="updateInfo.title" />
+        <input type="text" name="description" [(ngModel)]="updateInfo.description" />
+        <input type="submit" value="Create Task" />
+      </form>
+    </div>
+    <div *ngIf="oneTask.title" class="root" style="border:solid 1px green;">  <!-- tip: use css to place a border around your different components to better visualize them -->
+      <app-display [getOneTask]="oneTask">
+      </app-display>     <!-- use the selector of the task component to nest it within the root component -->
+    </div>
+  </body>
+  </html>

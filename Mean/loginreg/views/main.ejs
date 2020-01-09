@@ -1,0 +1,19 @@
+<html>
+        <%- JSON.stringify(messages) %> 
+
+    <h1>register pls</h1>
+    <form action="/createUser" method="post">
+        first Name <input type="text" name="first_name" value="luis">
+        last Name <input type="text" name="last_name" value="salas">
+        email <input type="text" name="email" value="salas@gmail.com">
+        password <input type="password" name="password">
+        bday <input type="date" name="bday">
+        <input type="submit">
+    </form>
+    <h1>login pls</h1>
+    <form action="/loginUser" method="post">
+        email <input type="text" name="email" value="guy@gmail.com">
+        password <input type="password" name="password" value="password">
+       <input type="submit">
+    </form>
+</html>

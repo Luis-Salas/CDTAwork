@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Guess the number between 1-100 and you get a prize!</h1>
+    <%= val.number %>
+    <%= val.output %>
+    <img src="<%= val.picture %>" alt="">
+
+    <form action="/guess" method="POST">
+        <input type="number" name="number">
+        <input type="submit">
+    </form>
+</body>
+</html>

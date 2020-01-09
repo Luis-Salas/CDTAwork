@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpService {
+  constructor(private _http: HttpClient) {
+    this.getPokemon();
+}
+
+getPokemon(){
+    let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/94/');
+    bulbasaur.subscribe(<Ability>(data) =>{
+      var favMove = data.moves[11].move.name
+      console.log(favMove)
+      console.log("Got our info!", data)
+    for(var i = 0; i<100; i++){
+        var pkm = this._http.get('https://pokeapi.co/api/v2/pokemon/' + i + '/')
+        pkm.subscribe(<Ability>(data) =>{
+          for(var x = 0 ; x < data.moves.length; x++){
+            if(data.moves[x].move.name == favMove){
+              console.log(data.name, "has the same move")
+              console.log("we have a match")
+            }
+          }
+        })
+    }
+  });
+  }
+}
+interface Ability {
+  pokemone: Object[];
+}

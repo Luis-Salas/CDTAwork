@@ -1,0 +1,31 @@
+<h1>look at all these cakes</h1>
+<div *ngFor="let x of allCakes"> 
+  <h3>{{x.baker}}</h3>
+  <a (click)="showCake(x._id)">
+    <img src="{{x.imageUrl}}" height="300" alt="">
+  </a>
+  <h1>create a rating</h1>
+  <!-- create rating -->
+  <form (submit)="createRating(x._id)">
+      <p> {{ rating | json }} </p>
+      rating<input type="number" name="title" [(ngModel)]="rating.rating" />
+      comment<input type="text" name="description" [(ngModel)]="rating.comment" />
+      <input type="submit" value="create rate" />
+  </form>
+  <!-- display all ratings -->
+  <div *ngFor="let rate of x.ratings"> 
+    <h2><span style="color:red;"> rating </span>{{rate.rating}}</h2>
+    <p>{{rate.comment}}</p>
+  </div>
+</div>
+<h1>create a cake</h1>
+<form (submit)="createCake()">
+    <p> {{ cake | json }} </p>
+    baker<input type="text" name="title" [(ngModel)]="cake.baker" />
+    imageurl<input type="text" name="description" [(ngModel)]="cake.imageUrl" />
+    <input type="submit" value="Create cake" />
+</form>
+<div class="root">  <!-- tip: use css to place a border around your different components to better visualize them -->
+  <h1>Welcome to {{ title }}!</h1>
+  <app-show [showCake]="oneCake"></app-show>     <!-- use the selector of the task component to nest it within the root component -->
+</div>
